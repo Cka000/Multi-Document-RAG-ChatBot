@@ -291,4 +291,63 @@ Different LLMs may produce different responses depending on their capabilities.
 
 **Note:**
 
-- Ensure that the selected model is available on your Groq
+- Ensure that the selected model is available on your Groq account.
+- Check model compatibility with the API features used by this project.
+- Using a different LLM provider may require changes to the API client, authentication, and application configuration.
+
+---
+
+## Important Notes
+
+- The chatbot answers questions using information retrieved from the indexed documents.
+- If relevant information is not available in the documents, the chatbot should respond accordingly rather than inventing an answer.
+- Scanned or image-based PDFs are not supported because they require OCR (Optical Character Recognition).
+- Use text-based PDFs for the best results.
+- Adding new documents may require re-indexing them before they become available for retrieval.
+
+---
+
+## Project Structure
+
+```text
+Multi-Document-RAG-ChatBot/
+│
+├── assets/
+│   └── screenshot.png
+│
+├── data/
+│   └── Your documents
+│
+├── .env
+├── .env.example
+├── .gitignore
+├── main.py
+├── requirements.txt
+└── README.md
+```
+
+*Note: The structure above illustrates the main project files. Your actual repository may contain additional folders or modules.*
+
+---
+
+## Future Improvements
+
+- Support for additional document formats.
+- OCR support for scanned PDFs.
+- Support for additional LLM providers.
+- Improved document management.
+- Better source citations for generated answers.
+- Advanced retrieval techniques.
+- Persistent vector database storage.
+
+---
+
+## Author
+
+**Cka000**
+
+GitHub: https://github.com/Cka000
+
+---
+
+If you find this project useful, consider giving the repository a ⭐ on GitHub!
