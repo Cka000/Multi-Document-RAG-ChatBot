@@ -48,8 +48,6 @@ It uses a structured RAG pipeline to retrieve relevant document content before g
 
 ## Understanding How RAG Works
 
-If you are new to RAG, here is a simple explanation.
-
 **RAG stands for Retrieval-Augmented Generation.**
 
 It combines two main processes:
@@ -58,8 +56,6 @@ It combines two main processes:
 2. **Generation:** Uses an LLM to generate an answer based on the retrieved information.
 
 ### How this chatbot works
-
-The application follows these steps:
 
 **Step 1: Document Loading**
 
@@ -94,37 +90,37 @@ The LLM generates an answer using the retrieved information.
 ### RAG Architecture
 
 ```text
-             Documents
-                 |
-                 v
-          Document Loading
-                 |
-                 v
-           Text Splitting
-                 |
-                 v
-       Hugging Face Embeddings
-                 |
-                 v
-          FAISS Vector Store
-                 |
-                 |
-          User Question
-                 |
-                 v
-        Question Embedding
-                 |
-                 v
-         Semantic Search
-                 |
-                 v
-       Relevant Document Chunks
-                 |
-                 v
-             Groq LLM
-                 |
-                 v
-          Generated Answer
+                 Documents
+                     |
+                     v
+              Document Loading
+                     |
+                     v
+               Text Splitting
+                     |
+                     v
+          Hugging Face Embeddings
+                     |
+                     v
+              FAISS Vector Store
+                     |
+                     |
+              User Question
+                     |
+                     v
+             Question Embedding
+                     |
+                     v
+               Semantic Search
+                     |
+                     v
+          Relevant Document Chunks
+                     |
+                     v
+                 Groq LLM
+                     |
+                     v
+              Generated Answer
 ```
 
 ---
@@ -168,10 +164,8 @@ Follow these steps to run the project on your local machine.
 Open your terminal or command prompt and execute:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Cka000/Multi-Document-RAG-ChatBot.git
 ```
-
-Replace `<repository-url>` with the actual GitHub repository URL.
 
 ### Step 2: Navigate to the Project Folder
 
@@ -193,7 +187,7 @@ Activate the virtual environment.
 
 **Windows:**
 
-```bash
+```powershell
 venv\Scripts\activate
 ```
 
@@ -208,7 +202,7 @@ source venv/bin/activate
 Install all the required Python packages:
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ### Step 5: Configure Your Groq API Key
@@ -236,6 +230,7 @@ GROQ_API_KEY=your_actual_groq_api_key
 Replace `your_actual_groq_api_key` with your actual API key.
 
 **Important:**
+
 - Never share your API key publicly.
 - Never upload your `.env` file to GitHub.
 - Each developer should configure their own API key.
@@ -261,7 +256,7 @@ data/
 Start the Streamlit application:
 
 ```bash
-streamlit run main.py
+python -m streamlit run main.py
 ```
 
 The chatbot will open in your default web browser.
@@ -295,63 +290,5 @@ The application supports multiple LLM selections, allowing users to experiment w
 Different LLMs may produce different responses depending on their capabilities.
 
 **Note:**
-- Ensure that the selected model is available on your Groq account.
-- Check model compatibility with the API features used by this project.
-- Using a different LLM provider may require changes to the API client, authentication, and application configuration.
 
----
-
-## Important Notes
-
-- The chatbot answers questions using information retrieved from the indexed documents.
-- If relevant information is not available in the documents, the chatbot should respond accordingly rather than inventing an answer.
-- Scanned or image-based PDFs are not supported because they require OCR (Optical Character Recognition).
-- Use text-based PDFs for the best results.
-- Adding new documents may require re-indexing them before they become available for retrieval.
-
----
-
-## Project Structure
-
-```text
-Multi-Document-RAG-ChatBot/
-│
-├── data/
-│   └── Your documents
-│
-├── assets/
-│   └── screenshot.png
-│
-├── .env
-├── .gitignore
-├── main.py
-├── requirements.txt
-└── README.md
-```
-
-*Note: The structure above illustrates the main project files. Your actual repository may contain additional folders or modules.*
-
----
-
-## Future Improvements
-
-- Support for additional document formats.
-- OCR support for scanned PDFs.
-- Support for additional LLM providers.
-- Improved document management.
-- Better source citations for generated answers.
-- Advanced retrieval techniques.
-- Persistent vector database storage.
-
----
-
-## Author
-
-**Cka000**
-
-GitHub: https://github.com/Cka000
-
----
-
-If you find this project useful, consider giving the repository a ⭐ on GitHub!
-
+- Ensure that the selected model is available on your Groq
