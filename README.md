@@ -55,7 +55,7 @@ It combines two main processes:
 1. **Retrieval:** Finds relevant information from your documents.
 2. **Generation:** Uses an LLM to generate an answer based on the retrieved information.
 
-### How this chatbot works
+### How This Chatbot Works
 
 **Step 1: Document Loading**
 
@@ -63,7 +63,7 @@ The chatbot reads documents placed inside the `data/` folder.
 
 **Step 2: Text Splitting**
 
-Large documents are divided into smaller pieces called chunks.
+Large documents are divided into smaller pieces called chunks. This makes it easier to retrieve relevant information.
 
 **Step 3: Text Embeddings**
 
@@ -219,6 +219,8 @@ Visit [Groq Console](https://console.groq.com/keys) and create an API key.
 
 Create a file named `.env` in the project's root directory.
 
+If the repository contains a `.env.example` file, you can copy it and rename the copy to `.env`.
+
 **3. Add your API key**
 
 Open the `.env` file and add:
@@ -251,6 +253,10 @@ data/
 └── SQL.txt
 ```
 
+You can use your own study materials, technical documents, notes, or other supported documents.
+
+The chatbot will use these documents as its knowledge source.
+
 ### Step 7: Run the Application
 
 Start the Streamlit application:
@@ -266,7 +272,7 @@ The chatbot will open in your default web browser.
 Once the application is running:
 
 1. Open the chatbot.
-2. Select an available LLM if the application provides model selection.
+2. Select an available LLM.
 3. Ask questions related to your documents.
 4. View the generated answers.
 5. Explore the retrieved document chunks to understand where the information came from.
@@ -274,7 +280,7 @@ Once the application is running:
 
 ---
 
-## Customizing the LLM
+## Customizing the LLM (Large Language Model)
 
 By default, this project uses the Groq API to access LLMs.
 
@@ -282,10 +288,20 @@ The application supports multiple LLM selections, allowing users to experiment w
 
 ### How to Change the LLM
 
-1. Visit the [Groq Console - Models](https://console.groq.com/docs/models).
+1. Visit [Groq Console - Models](https://console.groq.com/docs/models).
 2. Explore the available models.
 3. Select a model supported by your Groq account.
-4. Use its model ID in the application's model configuration or model selection option.
+4. Open `main.py`.
+5. Find the LLM model selection or configuration section.
+6. Replace or add the model ID according to the existing code structure.
+
+For example:
+
+```python
+model = "openai/gpt-oss-120b"
+```
+
+You can use another supported model ID instead.
 
 Different LLMs may produce different responses depending on their capabilities.
 
@@ -297,6 +313,57 @@ Different LLMs may produce different responses depending on their capabilities.
 
 ---
 
+## Customizing Your Documents
+
+One of the main advantages of this project is that you can use your own documents as the chatbot's knowledge source.
+
+You do not need to manually enter questions and answers into the Python code.
+
+Instead, you can add your own documents to the `data/` folder.
+
+### How to Add Your Own Documents
+
+1. Open the project directory.
+2. Navigate to the `data/` folder.
+3. Add your PDF, DOCX, or TXT files.
+4. Make sure the files contain readable text.
+5. Run or restart the application as required by its indexing implementation.
+6. Ask questions about the newly added documents.
+
+### Example
+
+Suppose you want to create a chatbot for learning Python and SQL.
+
+You can add:
+
+```text
+data/
+│
+├── Python_Basics.pdf
+├── Python_Advanced.pdf
+├── SQL_Notes.docx
+├── DBMS_Concepts.pdf
+└── Django_Notes.txt
+```
+
+Now you can ask questions such as:
+
+- What is a Python decorator?
+- Explain SQL joins with examples.
+- What is the difference between a list and a tuple?
+- Explain Django ORM.
+
+The chatbot retrieves relevant information from the indexed documents and uses it to generate answers.
+
+**Important:**
+
+- Only PDF, DOCX, and TXT files are supported by the current implementation.
+- Scanned PDFs require OCR and are not supported.
+- Newly added documents may need to be re-indexed before they become searchable.
+- Follow the existing document loading and indexing process in `main.py`.
+
+---
+
 ## Important Notes
 
 - The chatbot answers questions using information retrieved from the indexed documents.
@@ -304,6 +371,7 @@ Different LLMs may produce different responses depending on their capabilities.
 - Scanned or image-based PDFs are not supported because they require OCR (Optical Character Recognition).
 - Use text-based PDFs for the best results.
 - Adding new documents may require re-indexing them before they become available for retrieval.
+- The quality of the generated answers depends on document quality, retrieval relevance, and the selected LLM.
 
 ---
 
@@ -318,7 +386,6 @@ Multi-Document-RAG-ChatBot/
 ├── data/
 │   └── Your documents
 │
-├── .env
 ├── .env.example
 ├── .gitignore
 ├── main.py
@@ -327,6 +394,15 @@ Multi-Document-RAG-ChatBot/
 ```
 
 *Note: The structure above illustrates the main project files. Your actual repository may contain additional folders or modules.*
+
+---
+
+## Security
+
+- API keys are stored in environment variables.
+- The `.env` file should be excluded from Git tracking.
+- Never commit private credentials or API keys to the repository.
+- Each developer should use their own Groq API key.
 
 ---
 
